@@ -3,7 +3,7 @@ import requests
 
 
 def piratebay_search(query):
-
+    print("search key: ", query)
     url = f"https://piratebay.party/search/{query}/1/99/0"
     content = requests.get(url)
     soup = BeautifulSoup(content.text, 'lxml')

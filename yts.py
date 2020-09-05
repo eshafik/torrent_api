@@ -6,7 +6,7 @@ def yts_search(query):
     url = "https://yts.mx/ajax/search?query=" + query
     content = requests.get(url)
     data = content.json()
-    if data:
+    if data.get("data"):
         results = []
         for item in data.get("data"):
             content = requests.get(item.get("url"))
@@ -16,7 +16,7 @@ def yts_search(query):
                 single_data = {
                     "title": item.get("title"),
                     "size": row.find_all("p", class_="quality-size")[1].get_text(),
-                    "seeds": "",
+                    "seeds": "100",
                     "peers": "",
                     "resolution": row.find("div", class_="modal-quality")["id"].split("-")[-1],
                     "provider": "piratebay",

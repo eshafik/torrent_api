@@ -3,6 +3,7 @@ import requests
 
 
 def kickass_search(query):
+    print("on kickass.........")
     url = "https://kickass.unblockit.top/search.php?q="+query
     source = requests.get(url).text
     soup = bs(source, 'lxml')
