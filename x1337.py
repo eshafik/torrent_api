@@ -15,6 +15,7 @@ def get_soup(site):
 
 
 def search_1337x(query):
+    print("on 1337x .........")
     url = f"https://1337x.to/search/{query}/1/"
     soup = get_soup(url)
     rows = soup.find_all("tr")
@@ -30,6 +31,8 @@ def search_1337x(query):
         size = row.find("td", ["coll-4", "size", "mob-user"]).get_text().split()
         url = "https://1337x.to" + row.find_all("a")[1]["href"]
         soup = get_soup(url)
+        if not soup:
+            continue
         single_data = {
             "title": row.find_all("a")[1].get_text(),
             "size": size[0] + " " + size[1][:2],

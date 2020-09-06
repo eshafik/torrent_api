@@ -5,6 +5,7 @@ from title_checker import check_title
 
 
 def yts_search(query):
+    print("on yts..........")
     url = "https://yts.mx/ajax/search?query=" + query
     content = requests.get(url)
     data = content.json()

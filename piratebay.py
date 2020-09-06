@@ -5,7 +5,7 @@ from title_checker import check_title
 
 
 def piratebay_search(query):
-    print("search key: ", query)
+    print("on piratebay..........")
     url = f"https://piratebay.party/search/{query}/1/99/0"
     content = requests.get(url)
     soup = BeautifulSoup(content.text, 'lxml')

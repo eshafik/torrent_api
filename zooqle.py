@@ -5,6 +5,7 @@ from title_checker import check_title
 
 
 def zooqle_search(query):
+    print("on zooqle........")
     url = "https://zooqle.unblockit.top/search?q=" + query
     source = requests.get(url).text
     soup = bs(source, 'lxml')
