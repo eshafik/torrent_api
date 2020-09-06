@@ -62,17 +62,14 @@ class Movies(Resource):
                 lan_data_value = lan_data.result()
                 without_lan_data_value = without_lan_data.result()
 
+                lan_data_value.sort(key=lambda k: int(k['seeds']), reverse=True)
+                without_lan_data_value.sort(key=lambda k: int(k['seeds']), reverse=True)
+
                 new_data = lan_data_value + without_lan_data_value
         else:
             new_data = get_data(query)
+            new_data.sort(key=lambda k: int(k['seeds']), reverse=True)
 
-        # if (not new_data) and language:
-        #     new_data = get_data(query.replace(f"+{language}", ""))
-        #     new_data.sort(key=lambda k: int(k['seeds']), reverse=True)
-        #     return jsonify(
-        #         {"Total_Length": len(new_data), "Movies": new_data})  # Fetches first column that is Employee ID
-
-        new_data.sort(key=lambda k: int(k['seeds']), reverse=True)
         return jsonify({"Total_Length": len(new_data), "Movies": new_data})  # Fetches first column that is Employee ID
 
 

@@ -1,8 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
 
-from title_checker import check_title
-
 
 def eztvtorrent_search(query):
     url = "https://eztvtorrent.co/search?s=" + query
