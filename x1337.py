@@ -19,7 +19,14 @@ def search_1337x(query):
     soup = get_soup(url)
     rows = soup.find_all("tr")
     data = []
-    for row in rows[1:10]:
+    if not rows:
+        return []
+    if len(rows) > 9:
+        rows = rows[1:6]
+    else:
+        rows = rows[1:]
+    print("path: ", url)
+    for row in rows:
         size = row.find("td", ["coll-4", "size", "mob-user"]).get_text().split()
         url = "https://1337x.to" + row.find_all("a")[1]["href"]
         soup = get_soup(url)

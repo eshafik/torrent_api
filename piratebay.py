@@ -1,6 +1,8 @@
 from bs4 import BeautifulSoup
 import requests
 
+from title_checker import check_title
+
 
 def piratebay_search(query):
     print("search key: ", query)
@@ -19,5 +21,8 @@ def piratebay_search(query):
             "provider": "piratebay",
             "magnet": row.find_all("a")[2]["href"]
         }
+        # check = check_title(query=query, data=single_data)
+        # if check:
+        #     data.append(single_data)
         data.append(single_data)
     return data

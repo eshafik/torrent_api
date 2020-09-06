@@ -1,10 +1,12 @@
 from bs4 import BeautifulSoup as bs
 import requests
 
+from title_checker import check_title
+
 
 def kickass_search(query):
     print("on kickass.........")
-    url = "https://kickass.unblockit.top/search.php?q="+query
+    url = "https://kickass.unblockit.top/search.php?q=" + query
     source = requests.get(url).text
     soup = bs(source, 'lxml')
     rows = soup.find_all("tr", {"id": "torrent_latest_torrents12975568"})
@@ -19,6 +21,8 @@ def kickass_search(query):
             "provider": "kickass",
             "magnet": row.find("a", title="Torrent magnet link")["href"],
         }
+        # check = check_title(query=query, data=single_data)
+        # if check:
         data.append(single_data)
     return data
 

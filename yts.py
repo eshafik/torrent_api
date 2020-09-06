@@ -1,6 +1,8 @@
 from bs4 import BeautifulSoup
 import requests
 
+from title_checker import check_title
+
 
 def yts_search(query):
     url = "https://yts.mx/ajax/search?query=" + query
@@ -22,5 +24,8 @@ def yts_search(query):
                     "provider": "piratebay",
                     "magnet": row.find_all("a")[1]["href"]
                 }
+                # check = check_title(query=query, data=single_data)
+                # if check:
+                #     data.append(single_data)
                 results.append(single_data)
         return results

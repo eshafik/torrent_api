@@ -1,6 +1,8 @@
 from bs4 import BeautifulSoup
 import requests
 
+from title_checker import check_title
+
 
 def eztvtorrent_search(query):
     url = "https://eztvtorrent.co/search?s=" + query
@@ -21,5 +23,9 @@ def eztvtorrent_search(query):
                 "provider": "eztv",
                 "magnet": item.find_all("td")[3].find("a")["href"]
             }
+            # check = check_title(query=query, data=single_data)
+            # if check:
+            #     data.append(single_data)
+
             data.append(single_data)
     return data

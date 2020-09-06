@@ -1,6 +1,8 @@
 from bs4 import BeautifulSoup as bs
 import requests
 
+from title_checker import check_title
+
 
 def zooqle_search(query):
     url = "https://zooqle.unblockit.top/search?q=" + query
@@ -32,5 +34,9 @@ def zooqle_search(query):
             "provider": "zooqle",
             "magnet": magnet["href"]
         }
+        # check = check_title(query=query, data=single_data)
+        # if check:
+        #     data.append(single_data)
+
         data.append(single_data)
     return data
